@@ -23,8 +23,10 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
+      exclude: /node_modules/, 
       loader: 'babel',
       query: {
+        compact: false,
         presets: ['react', 'es2015', 'stage-2']
       },
       include: __dirname

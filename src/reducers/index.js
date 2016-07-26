@@ -1,31 +1,51 @@
 import { combineReducers } from 'redux'
-import { INITIAL_STATE } from '../core'
+import { INITIAL_STATE, setPlayers, setUser, setVisible, setInitialPlayer } from '../core'
 import {
-  JOIN_PLAYERS,
-  LOAD_PLAYERS,
+  RECEIVE_PLAYERS,
+  LOAD_USER,
 } from '../actions'
 
-function loadPlayers(state = {}, action) {
+function session(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case LOAD_PLAYERS:
-      return action.players
+    case LOAD_USER:
+      return setUser(state, action.username)
     default:
       return state
   }
 }
 
-function joinPlayers(state = {}, action) {
+function visible(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case JOIN_PLAYERS:
-      return action.playerName
+    case LOAD_USER:
+      return setVisible(state)
     default:
       return state
   }
 }
+
+function players(state = INITIAL_STATE, action) {
+  switch (action.type) {
+    case LOAD_USER:
+      return setInitialPlayer(state, action.username)
+    default:
+      return state
+  }
+}
+
+// function receivePlayers(state = INITIAL_STATE, action) {
+//   switch (action.type) {
+//     case RECEIVE_PLAYERS:
+//       return setPlayers(state, action.players)
+//     default:
+//       return state
+//   }
+// }
 
 const rootReducer = combineReducers({
-  loadPlayers,
-  joinPlayers,
+  //receivePlayers,
+  session,
+  visible,
+  players,
 })
 
 export default rootReducer

@@ -1,15 +1,23 @@
-export const LOAD_PLAYERS = 'LOAD_PLAYERS'
-export const JOIN_PLAYERS = 'JOIN_PLAYERS'
+export const RECEIVE_PLAYERS = 'RECEIVE_PLAYERS'
+export const LOAD_USER = 'LOAD_USER'
 
-export function loadPlayers(players) {
+export function getPlayers() {
   return {
-    type: LOAD_PLAYERS,
-    players: players,
+    type: 'LOAD_PLAYERS',
   }
 }
-export function joinPlayers(playerName) {
+
+// export function loadUser(username) {
+//   return {
+//     type: LOAD_USER,
+//     username: username
+//   }
+// }
+
+
+export function session(username) {
   return {
-    type: JOIN_PLAYERS,
-    playerName: playerName,
+    type: LOAD_USER,
+    username: username
   }
 }

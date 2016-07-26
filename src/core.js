@@ -1,12 +1,32 @@
+
 const AppState = {
-  game: {},
+  //game: {},
   players: [],
-  visible: '',
-  username: '',
-  challengedPlayer: '',
-  activeChallenge: '',
-  challengeStatus: '',
-  challengeID: '',
+  status: {},
+  session: {},
+  //challengedPlayer: '',
+  //activeChallenge: '',
+  //challengeStatus: '',
+  challengeID: {},
 }
 
+
+
 export const INITIAL_STATE = AppState;
+
+// export function setPlayers(state, players) {
+//
+//    return {...state, players: players}
+// }
+
+export function setUser(state, username) {
+    return {username: username}
+}
+
+export function setInitialPlayer(state, username) {
+    return [username, '']
+}
+
+export function setVisible(state, username) {
+    return {items: 'roster'}
+}
