@@ -14,10 +14,9 @@ const AppState = {
 
 export const INITIAL_STATE = AppState;
 
-// export function setPlayers(state, players) {
-//
-//    return {...state, players: players}
-// }
+export function setPlayers(state, players) {
+   return players
+}
 
 export function setUser(state, username) {
     return {username: username}

@@ -1,5 +1,5 @@
 export const RECEIVE_PLAYERS = 'RECEIVE_PLAYERS'
-export const LOAD_USER = 'LOAD_USER'
+export const LOGIN = 'LOGIN'
 
 export function getPlayers() {
   return {
@@ -7,17 +7,17 @@ export function getPlayers() {
   }
 }
 
-// export function loadUser(username) {
-//   return {
-//     type: LOAD_USER,
-//     username: username
-//   }
-// }
+export function receivePlayers(players) {
+  return {
+    type: RECEIVE_PLAYERS,
+    players: players,
+  }
+}
 
 
 export function session(username) {
   return {
-    type: LOAD_USER,
+    type: LOGIN,
     username: username
   }
 }

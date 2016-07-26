@@ -6,12 +6,9 @@ import * as actions from '../actions'
 import * as client from '../client'
 
 
-export function* loadPlayers() {
-    debugger
-  yield put( actions.loadPlayers() )
+function* loadPlayers() {    
   const players = yield call(client.loadPlayers)
-  debugger
-  yield put( actions.loadPlayers(players) )
+  yield put( actions.receivePlayers(players) )
 }
 
 function* joinPlayer(action) {
@@ -19,7 +16,10 @@ function* joinPlayer(action) {
   yield put( actions.session(resp.playerName) )
 }
 
-export default function* root() {
+export default function *root() {
   //yield fork(loadPlayers)
-  yield* takeEvery("JOIN_PLAYER", joinPlayer)
+  yield [
+    takeEvery("JOIN_PLAYER", joinPlayer),
+    takeEvery("LOAD_PLAYERS", loadPlayers),
+  ]
 }
