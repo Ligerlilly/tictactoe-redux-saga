@@ -49,7 +49,6 @@ function players(state = INITIAL_STATE, action) {
 function challengeID(state = INITIAL_STATE, action) {
   switch (action.type) {
     case RECEIVE_CHALLENGE_ID:
-    debugger
       return setChallengeID(state, action.resp.challengeID)
     default:
       return state
@@ -59,7 +58,6 @@ function challengeID(state = INITIAL_STATE, action) {
 function challengerPlayer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case RECEIVE_CHALLENGE_ID:
-    debugger
       return setChallengerPlayer(state, action.resp.challengerPlayer)
     default:
       return state
@@ -69,7 +67,6 @@ function challengerPlayer(state = INITIAL_STATE, action) {
 function challengedPlayer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case RECEIVE_CHALLENGE_ID:
-    debugger
       return setChallengedPlayer(state, action.resp.challengedPlayer)
     default:
       return state
