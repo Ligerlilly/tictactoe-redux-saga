@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 export default class Player extends React.Component {
     constructor(props) {
         super(props);
-        this.challengeHandler = this.challengeHandler.bind(this)
+        this.challengePlayer = this.challengePlayer.bind(this)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -25,18 +25,20 @@ export default class Player extends React.Component {
       // }, 2000 );
     }
 
-    challengeHandler(playerName) {
-      () => this.props.dispatch({type: 'CHALLENGE_PLAYER', playerName: playerName})
+    challengePlayer(playerName, username) {
+      return () => this.props.dispatch({type: 'CHALLENGE_PLAYER', playerName: playerName, username: username})
+
         //Dispatcher.dispatch( { type: 'challenge-player', challengedPlayer : this.props.player.playerName });
     }
 
     render() {
-        // var challenge = function(playerName) {
+        // let challenge = (playerName) => {
         //   debugger
-        //     this.doChallenge(playerName);
-        // }.bind(this);
-
-        var challengeButton = this.props.canChallenge ? <button onClick={this.challengeHandler(this.props.playerName)}>Challenge</button> : '';
+        //   return this.doChallenge(playerName)
+        // }
+        const { playerName } = this.props
+        const { username } = this.props.session
+        var challengeButton = this.props.canChallenge ? <button onClick={this.challengePlayer(playerName, username)}>Challenge</button> : '';
 
         return (
             <li>

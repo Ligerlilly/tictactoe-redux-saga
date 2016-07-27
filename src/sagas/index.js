@@ -6,7 +6,7 @@ import * as actions from '../actions'
 import * as client from '../client'
 
 
-function* loadPlayers() {    
+function* loadPlayers() {
   const players = yield call(client.loadPlayers)
   yield put( actions.receivePlayers(players) )
 }
@@ -16,10 +16,16 @@ function* joinPlayer(action) {
   yield put( actions.session(resp.playerName) )
 }
 
+function* challengePlayer(action) {
+  const resp = yield call(client.challengePlayer, action.playerName, action.username)
+  yield put( actions.challengeID(resp) )
+}
+
 export default function *root() {
   //yield fork(loadPlayers)
   yield [
     takeEvery("JOIN_PLAYER", joinPlayer),
     takeEvery("LOAD_PLAYERS", loadPlayers),
+    takeEvery("CHALLENGE_PLAYER", challengePlayer),
   ]
 }

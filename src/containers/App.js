@@ -17,7 +17,7 @@ class App extends Component {
     const visible = this.props.visible.status
     let toShow = ''
 
-    if (!this.props.challengeID) {
+    if (!this.props.challengeID.id) {
       switch (visible) {
         case 'roster':
         toShow = <Lobby />;

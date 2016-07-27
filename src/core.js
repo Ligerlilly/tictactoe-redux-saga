@@ -4,15 +4,26 @@ const AppState = {
   players: [],
   status: {},
   session: {},
-  //challengedPlayer: '',
+  challengedPlayer: '',
+  challengerPlayer: '',
   //activeChallenge: '',
   //challengeStatus: '',
   challengeID: {},
 }
 
-
-
 export const INITIAL_STATE = AppState;
+
+export function setChallengerPlayer(state, challengerPlayer) {
+  return challengerPlayer
+}
+
+export function setChallengedPlayer(state, challengedPlayer) {
+  return challengedPlayer
+}
+
+export function setChallengeID(state, id) {
+  return {id: id}
+}
 
 export function setPlayers(state, players) {
    return players
